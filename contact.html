@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Reyes Bautista & Associates</title>
+  <style>
+/* ============================================================
+   SAN JOSE LEGAL ASSOCIATIONS — style.css
+   Palette: Deep Navy · Warm Gold · Ivory · Charcoal
+   Fonts: Cormorant Garamond (display) + DM Sans (body)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── CSS Variables ────────────────────────────────────────── */
+:root {
+  --navy:       #0B1F3A;
+  --navy-mid:   #122749;
+  --navy-light: #1A3560;
+  --gold:       #C9A84C;
+  --gold-light: #E2C880;
+  --gold-pale:  #F5EDD3;
+  --ivory:      #F9F6EF;
+  --white:      #FFFFFF;
+  --charcoal:   #2C2C2C;
+  --gray:       #6B7280;
+  --gray-light: #E5E7EB;
+  --border:     rgba(201,168,76,0.25);
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --radius:  8px;
+  --radius-lg: 16px;
+  --shadow: 0 4px 24px rgba(11,31,58,0.10);
+  --shadow-lg: 0 12px 48px rgba(11,31,58,0.18);
+  --transition: 0.3s ease;
+}
+
+/* ── Reset ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--ivory);
+  color: var(--charcoal);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ── Typography ───────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--navy);
+  line-height: 1.15;
+}
+h1 { font-size: clamp(2.6rem, 5.5vw, 4.5rem); font-weight: 300; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 600; }
+h4 { font-size: 1.1rem; font-weight: 600; }
+p  { font-size: 1rem; color: var(--gray); line-height: 1.75; }
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Layout Utilities ─────────────────────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.section { padding: 96px 0; }
+.section-sm { padding: 64px 0; }
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy);
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(201,168,76,0.35);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.45);
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-navy {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-navy:hover {
+  background: var(--navy-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(11, 31, 58, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.nav-logo-main {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+.nav-logo-sub {
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  position: fixed;
+  top: 0;
+  right: 2rem;
+  height: 72px;
+  z-index: 1000;
+}
+.nav-links a {
+  font-size: 0.825rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  transition: color var(--transition);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--gold);
+  transition: width var(--transition);
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--white); }
+.nav-links a:hover::after,
+.nav-links a.active::after { width: 100%; }
+.nav-cta {
+  background: var(--gold);
+  color: var(--navy) !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius);
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+}
+.nav-cta:hover { background: var(--gold-light) !important; }
+.nav-cta::after { display: none !important; }
+
+/* Hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.nav-toggle span {
+  display: block;
+  width: 26px; height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.nav-toggle:hover span { background: var(--gold-light); }
+
+/* ── Page offset for fixed nav ── */
+.page-content { padding-top: 72px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.65);
+  padding: 64px 0 0;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 56px;
+}
+.footer-brand .nav-logo-main { color: var(--white); font-size: 1.4rem; }
+.footer-brand p {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  max-width: 280px;
+}
+.footer-col h5 {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+.footer-col ul li { margin-bottom: 0.65rem; }
+.footer-col ul li a {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.55);
+  transition: color var(--transition);
+}
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-col address {
+  font-style: normal;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+}
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.footer-social a {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.8rem;
+  transition: var(--transition);
+}
+.footer-social a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 1.25rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-bottom-links a {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  transition: color var(--transition);
+}
+.footer-bottom-links a:hover { color: var(--gold); }
+
+/* ============================================================
+   SHARED COMPONENTS
+   ============================================================ */
+
+/* Gold divider */
+.gold-divider {
+  width: 56px; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+  margin: 1.25rem 0 1.75rem;
+}
+.gold-divider.center { margin: 1.25rem auto 1.75rem; }
+
+/* Section heading centered */
+.section-heading { text-align: center; }
+.section-heading p {
+  max-width: 580px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+/* Card base */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Tag / badge */
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: var(--gold-pale);
+  color: var(--navy);
+}
+
+/* Stat row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: 4rem;
+}
+.stat-item {
+  background: var(--navy);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.stat-item .stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-item .stat-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   PAGE HERO (inner pages)
+   ============================================================ */
+.page-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 96px 0 72px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.page-hero .container { position: relative; }
+.page-hero h1 {
+  color: var(--white);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+}
+.page-hero .page-hero-sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0.03em;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.breadcrumb a, .breadcrumb span {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  transition: color var(--transition);
+}
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb .sep { color: rgba(255,255,255,0.25); font-size: 0.7rem; }
+.breadcrumb .current { color: var(--gold); }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.anim-fade-up { animation: fadeUp 0.7s ease both; }
+.anim-delay-1 { animation-delay: 0.1s; }
+.anim-delay-2 { animation-delay: 0.25s; }
+.anim-delay-3 { animation-delay: 0.4s; }
+.anim-delay-4 { animation-delay: 0.55s; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 992px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .stats-row   { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed !important;
+    top: 72px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 72px) !important;
+    background: #0B1F3A !important;
+    padding: 2rem;
+    gap: 1.5rem;
+    align-items: flex-start;
+    z-index: 9999 !important;
+    overflow-y: auto;
+    transform: none !important;
+  }
+  .nav-links.open a { font-size: 1.1rem; color: var(--white); }
+  .nav-toggle { display: flex; }
+  .section { padding: 64px 0; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .container { padding: 0 1.25rem; }
+}
+
+
+/* ============================================================
+   SMOOTH ANIMATIONS & TRANSITIONS
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.40s; }
+
+.navbar { transition: background 0.4s ease, box-shadow 0.4s ease; }
+.navbar.scrolled {
+  background: rgba(11,31,58,0.99) !important;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+}
+
+#navLinks {
+  transition: opacity 0.35s cubic-bezier(0.22,1,0.36,1),
+              transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+#navLinks:not(.open) {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-12px);
+}
+#navLinks.open {
+  pointer-events: auto;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.nav-toggle span {
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1),
+              opacity 0.3s ease,
+              background 0.25s ease;
+}
+.nav-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.attorney-card, .cred-card, .award-card, .result-card, .card, .practice-card {
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.4s cubic-bezier(0.22,1,0.36,1),
+              border-color 0.35s ease !important;
+}
+.btn {
+  transition: background 0.25s ease,
+              transform 0.2s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.25s ease,
+              color 0.25s ease !important;
+}
+.btn:active { transform: scale(0.97) !important; }
+
+.attorney-photo-inner img {
+  transition: transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.attorney-card:hover .attorney-photo-inner img { transform: scale(1.07); }
+
+@keyframes pageFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.page-content { animation: pageFadeIn 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+
+</style>
+  <style>
+    /* ── Contact layout ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+      padding: 80px 0 96px;
+    }
+
+    /* ── Left info panel ── */
+    .contact-info h2 { margin-bottom: 0.25rem; }
+    .contact-info > p {
+      font-size: 1rem;
+      max-width: 340px;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+    .info-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: all var(--transition);
+    }
+    .info-card:hover {
+      border-color: var(--border);
+      box-shadow: var(--shadow);
+      transform: translateX(4px);
+    }
+    .info-icon {
+      width: 44px; height: 44px;
+      background: var(--navy);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .info-body { flex: 1; }
+    .info-body .info-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .info-body .info-value {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .info-body .info-sub {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 0.1rem;
+    }
+
+    /* Map / office image */
+    .map-box {
+      margin-top: 2rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 220px;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+    .map-box img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .map-box-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(11,31,58,0.9), transparent);
+      padding: 1.5rem 1rem 0.85rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    /* Office card images */
+    .office-card-img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+    .office-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .office-card:hover .office-card-img img { transform: scale(1.04); }
+
+    /* ── Intake Form ── */
+    .contact-form-wrap {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-light);
+    }
+    .form-header { margin-bottom: 2.5rem; }
+    .form-header h3 { font-size: 1.6rem; margin-bottom: 0.35rem; }
+    .form-header p { font-size: 0.9rem; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    input, select, textarea {
+      font-family: var(--font-body);
+      font-size: 0.925rem;
+      color: var(--charcoal);
+      background: var(--ivory);
+      border: 1.5px solid var(--gray-light);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      width: 100%;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    input::placeholder, textarea::placeholder { color: #aaa; }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+      background: var(--white);
+    }
+    select { appearance: none; cursor: pointer; }
+    textarea { resize: vertical; min-height: 130px; }
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin: 0.5rem 0 2rem;
+    }
+    .form-check input[type="checkbox"] {
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--navy);
+    }
+    .form-check label {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      font-size: 0.95rem;
+      justify-content: center;
+    }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+    .form-success .success-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .form-success h4 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.9rem; }
+
+    /* ── Office address info ── */
+    .office-section { background: var(--ivory); }
+    .office-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    .office-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--gray-light);
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .office-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .office-card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .office-card h4 {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .office-card p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--charcoal);
+    }
+    .office-card a { color: var(--navy); font-weight: 500; }
+    .office-card a:hover { color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .office-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .contact-form-wrap { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-main">Reyes Bautista</span>
+      <span class="nav-logo-sub">Law Offices</span>
+    </a>
+    
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="practice-areas.html">Practice Areas</a></li>
+      <li><a href="attorneys.html">Our Attorneys</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Free Consultation</a></li>
+    </ul>
+
+<div class="page-content">
+
+<div class="page-hero" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=50') center/cover no-repeat;opacity:0.09;z-index:0;"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Contact</span>
+    </div>
+    <h1 class="anim-fade-up">Get in Touch</h1>
+    <p class="page-hero-sub anim-fade-up anim-delay-1">Schedule your free consultation today. We'll get back to you within one business day.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTACT LAYOUT ═══════════════ -->
+<div class="container">
+  <div class="contact-layout">
+
+    <!-- Left: Info -->
+    <div class="contact-info">
+      <span class="section-label">Reach Us</span>
+      <h2>We're Here to Help</h2>
+      <div class="gold-divider"></div>
+      <p>Your first consultation is free and completely confidential. Tell us about your situation and we'll connect you with the right attorney.</p>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-icon"><svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2a9 9 0 019 9c0 6-9 16-9 16S5 17 5 11a9 9 0 019-9z" stroke="#C9A84C" stroke-width="1.5" fill="none"/><circle cx="14" cy="11" r="3.5" stroke="#C9A84C" stroke-width="1.4" fill="none"/></svg></div>
+          <div class="info-body">
+            <div class="info-label">Office Address</div>
+            <div class="info-value">2nd Floor, Peñafrancia Building, Magsaysay Avenue</div>
+            <div class="info-sub">Naga City, Camarines Sur 4400</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3h5l2 5.5-3 2a13 13 0 006.5 6.5l2-3L24 16v5a2 2 0 01-2 2C10 23 3 14 3 5a2 2 0 013-2z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="info-body">
+            <div class="info-label">Phone</div>
+            <div class="info-value"><a href="tel:+63288880192" style="color:inherit;">(02) 8888-0192</a></div>
+            <div class="info-sub">Mon–Fri, 8:30 AM – 6:00 PM</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="6" width="22" height="16" rx="2" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M3 8l11 8 11-8" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="info-body">
+            <div class="info-label">Email</div>
+            <div class="info-value"><a href="/cdn-cgi/l/email-protection#bcd5d2dad3fccfddd2d6d3cfd9d0d9dbddd0d0d9dbddd092dfd3d1"><span class="__cf_email__" data-cfemail="6f060109002f1c0e0105001c0a030a080e03030a080e03410c0002">[email&#160;protected]</span></a></div>
+            <div class="info-sub">Response within 1 business day</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="14" cy="14" r="10" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M14 7v7l4 2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="info-body">
+            <div class="info-label">Office Hours</div>
+            <div class="info-value">Mon–Fri: 8:30 AM – 6:00 PM</div>
+            <div class="info-sub">Emergency line available 24/7</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Office photo -->
+      <div class="map-box">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Law office building" loading="lazy" />
+        <div class="map-box-label">📍 Magsaysay Avenue · Naga City, Camarines Sur</div>
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="contact-form-wrap" id="intake-form">
+      <div class="form-header">
+        <span class="section-label">Free Consultation</span>
+        <h3>Submit Your Inquiry</h3>
+        <p>All information shared is strictly confidential and protected by attorney-client privilege.</p>
+      </div>
+
+      <form id="consultForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" placeholder="Jane" required />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" placeholder="Doe" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" placeholder="jane@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(408) 000-0000" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="practiceArea">Area of Law *</label>
+          <select id="practiceArea" required>
+            <option value="" disabled selected>Select a practice area…</option>
+            <option value="corporate">Corporate & Business Law</option>
+            <option value="criminal">Criminal Defense</option>
+            <option value="family">Family Law</option>
+            <option value="immigration">Immigration Law</option>
+            <option value="realestate">Real Estate Law</option>
+            <option value="other">Other / Not Sure</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="urgency">How Soon Do You Need Help?</label>
+          <select id="urgency">
+            <option value="" disabled selected>Select urgency…</option>
+            <option value="asap">As soon as possible</option>
+            <option value="week">Within this week</option>
+            <option value="month">Within this month</option>
+            <option value="exploring">Just exploring options</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Brief Description of Your Matter *</label>
+          <textarea id="message" rows="5" placeholder="Please briefly describe your legal situation. The more detail you provide, the better we can prepare for your consultation." required></textarea>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" id="consent" required />
+          <label for="consent">I understand that submitting this form does not create an attorney-client relationship. I consent to be contacted by Reyes Bautista & Associates regarding my inquiry.</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit">Submit Consultation Request →</button>
+      </form>
+
+      <!-- Success state -->
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon"><svg width="48" height="48" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx=14 cy=14 r=10 stroke=#C9A84C stroke-width=1.5 fill=none/><path d=M9 14l3.5 3.5L19 10 stroke=#C9A84C stroke-width=1.8 stroke-linecap=round stroke-linejoin=round/></svg></div>
+        <h4>Request Received!</h4>
+        <p>Thank you for reaching out. An attorney from our team will contact you within <strong>one business day</strong> to schedule your free consultation.</p>
+        <p style="margin-top:1rem;">For urgent matters, please call us directly at <strong>(02) 8888-0192</strong>.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ OFFICE INFO ═══════════════ -->
+<section class="section-sm office-section" id="office">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-label">Find Us</span>
+      <h2>Office Information</h2>
+      <div class="gold-divider center"></div>
+    </div>
+    <div class="office-grid">
+      <div class="office-card">
+        <div class="office-card-img"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Office building exterior" loading="lazy" /></div>
+        <div class="office-card-icon"><svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="3" width="20" height="22" rx="1" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M4 10h20" stroke="#C9A84C" stroke-width="1.3"/><path d="M9 10V3M14 10V3M19 10V3" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/><rect x="10" y="17" width="8" height="8" rx="1" stroke="#C9A84C" stroke-width="1.3" fill="none"/><path d="M8 14h2M18 14h2M8 18h2M18 18h2" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <h4>Main Office</h4>
+        <p>
+          2nd Floor, Peñafrancia Building, Magsaysay Avenue<br/>
+          Naga City, Camarines Sur 4400<br/><br/>
+          <a href="https://maps.google.com/?q=Magsaysay+Avenue+Naga+City+Camarines+Sur" target="_blank">Get Directions →</a>
+        </p>
+      </div>
+      <div class="office-card">
+        <div class="office-card-img"><img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80" alt="Parking and accessibility" loading="lazy" /></div>
+        <div class="office-card-icon"><svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="20" height="20" rx="3" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M10 20V8h5a4 4 0 010 8h-5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+        <h4>Parking & Access</h4>
+        <p>Street parking available along Magsaysay Avenue. PWD-accessible entrance on the ground floor of the Peñafrancia Building.</p>
+      </div>
+      <div class="office-card">
+        <div class="office-card-img"><img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80" alt="Public transit" loading="lazy" /></div>
+        <div class="office-card-icon"><svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="3" width="14" height="17" rx="3" stroke="#C9A84C" stroke-width="1.5" fill="none"/><path d="M7 15h14" stroke="#C9A84C" stroke-width="1.3"/><circle cx="10.5" cy="19.5" r="1.8" stroke="#C9A84C" stroke-width="1.3" fill="none"/><circle cx="17.5" cy="19.5" r="1.8" stroke="#C9A84C" stroke-width="1.3" fill="none"/><path d="M10 7.5h8M10 11h8" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/><path d="M9 23l1.5-2M19 23l-1.5-2" stroke="#C9A84C" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        <h4>Public Transit</h4>
+        <p>Conveniently located near the Naga City Terminal and major jeepney routes serving all of Camarines Sur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-content -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <span class="nav-logo-main">Reyes Bautista</span>
+          <span class="nav-logo-sub">Law Offices</span>
+        </div>
+        <p>Serving individuals, families, and businesses in Naga City and the Bicol Region since 1998.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Twitter">𝕏</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Practice Areas</h5>
+        <ul>
+          <li><a href="practice-areas.html#corporate">Corporate Law</a></li>
+          <li><a href="practice-areas.html#criminal">Criminal Defense</a></li>
+          <li><a href="practice-areas.html#family">Family Law</a></li>
+          <li><a href="practice-areas.html#immigration">Immigration Law</a></li>
+          <li><a href="practice-areas.html#realestate">Real Estate Law</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>The Firm</h5>
+        <ul>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="attorneys.html">Our Attorneys</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <address>
+          2nd Floor, Peñafrancia Building, Magsaysay Avenue<br/>
+          Naga City, Camarines Sur 4400<br/><br/>
+          <a href="tel:+63288880192">(02) 8888-0192</a><br/>
+          <a href="/cdn-cgi/l/email-protection#ef86818980af9c8e8185809c8a838a888e83838a888e83c18c8082"><span class="__cf_email__" data-cfemail="caa3a4aca58ab9aba4a0a5b9afa6afadaba6a6afadaba6e4a9a5a7">[email&#160;protected]</span></a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Reyes Bautista & Associates. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Disclaimer</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.getElementById('consultForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const required = this.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(field => {
+      field.style.borderColor = '';
+      if (!field.value.trim()) {
+        field.style.borderColor = '#dc2626';
+        valid = false;
+      }
+    });
+    if (!valid) return;
+    this.style.display = 'none';
+    document.querySelector('.form-success').style.display = 'block';
+  });
+</script>
+
+<script>
+(function() {
+  /* Scroll reveal */
+  var selectors = [
+    '.attorney-card','.cred-card','.award-card','.result-card',
+    '.section-heading','.stat-item','.footer-col','.footer-brand',
+    '.practice-card','.contact-card','.faq-item','.service-card',
+    '.cta-box','.team-card','.info-card'
+  ];
+  var revealEls = document.querySelectorAll(selectors.join(','));
+  revealEls.forEach(function(el, i) {
+    el.classList.add('reveal');
+    var d = i % 5;
+    if (d > 0) el.classList.add('reveal-delay-' + d);
+  });
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(function(el) { obs.observe(el); });
+
+  /* Navbar darken on scroll */
+  var navbar = document.querySelector('.navbar');
+  if (navbar) {
+    window.addEventListener('scroll', function() {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  }
+
+  /* Hamburger toggle + X morph */
+  var navToggle = document.getElementById('navToggle');
+  var navLinks  = document.getElementById('navLinks');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function() {
+      var isOpen = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('active');
+      });
+    });
+  }
+
+  /* Smooth anchor scroll */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var id = a.getAttribute('href');
+      if (id.length > 1) {
+        var t = document.querySelector(id);
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      }
+    });
+  });
+})();
+</script>
